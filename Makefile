@@ -40,3 +40,6 @@ jupyter:
 
 test:
 	docker run --user $(shell id -u) -v $(PWD):/home/jovyan $(IMAGE) bash -c 'cd /tests; ls -ltor; make'
+
+singularity:
+	docker run -v /var/run/docker.sock:/var/run/docker.sock -v ${PWD}:/output --privileged -t --rm quay.io/singularity/docker2singularity $(IMAGE)
